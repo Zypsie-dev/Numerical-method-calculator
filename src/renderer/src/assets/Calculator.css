@@ -1,5 +1,6 @@
 #calculator {
     width: 40%;
+    min-width: 300px;
     aspect-ratio: 1/1;
     display: flex;
     flex-direction: column;
@@ -10,21 +11,19 @@
     backdrop-filter: blur(6.7px);
     -webkit-backdrop-filter: blur(6.7px);
     border-radius: 10px;
-    padding: 0 0 3% 0;
+    padding: 0 0 5% 0;
     position: relative;
-    top:20%;
+    top: 10%;
 }
 
 #calculator h3 {
     margin-top: 20%;
     padding-bottom: 5%;
     font-size: 1.5em;
-    text-align: center;
 }
 
 #calculator header {
-    width: 50%;
-    height: 20%;
+    width: 70%;
     padding: 5% 0 5% 0;
     display: flex;
     justify-content: center;
@@ -97,16 +96,17 @@
 .table-styled {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20%;
+    margin-top: 150px;
     margin-bottom: 30px;
+    position: relative;
 }
 
 /* Style the table header */
 .table-styled th {
     background-color: #007BFF;
     color:var(--text-color);
-    padding: 1% 0% 1% 5%;
-    text-align: left;
+    padding: 1% 0 1% 0;
+        text-align: center;
 }
 
 /* Style the table data cells */
@@ -137,5 +137,9 @@
     background-color: #007BFF;
     color: var(--text-color);
     position: relative;
-    padding-bottom: 5%;
+    bottom: 10px;
+    }
+    
+    .secant h3 {
+        display: inline-block;
 }

@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import BackGround from './components/BackGround'
 import Layout from './components/Layout'
 import Home from './components/Home'
-import Bisection from './components/Bisection'
+import Calculator from './components/Linear'
 import "@fontsource/montserrat";
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="/bisection" element={<Bisection />} />
+            <Route path="/calculator" element={<Calculator/>} />
           </Route>
         </Routes>
     </div>

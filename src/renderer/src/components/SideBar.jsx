@@ -12,7 +12,7 @@ const iconMap = {
 };
 const linkMap ={
     Home: "/",
-    Nonlinear: "/bisection",
+    Nonlinear: "/calculator",
     Setting: "/setting"
 }
 function MenuItem(props){

@@ -1,17 +1,17 @@
 import {
-  FiEdit,
   FiChevronDown,
-  FiTrash,
-  FiShare,
-  FiPlusSquare,
 } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 
-const StaggeredDropDown = () => {
+
+const StaggeredDropDown = ({setMode}) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const handleMethodSelect = (method) => {
+     setMode(method);
+     setOpen(false);
+   };
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -48,28 +48,21 @@ const StaggeredDropDown = () => {
         style={{ originY: "top", translateX: "-50%" }}
         className="dropdown-menu"
       >
-        <Option setOpen={setOpen} Icon={FiEdit} text="Edit" />
-        <Option setOpen={setOpen} Icon={FiPlusSquare} text="Duplicate" />
-        <Option setOpen={setOpen} Icon={FiShare} text="Share" />
-        <Option setOpen={setOpen} Icon={FiTrash} text="Remove" />
+        <Option setOpen={setOpen} text="Bisection" OnClick={()=>handleMethodSelect('bisection')}/>
+        <Option setOpen={setOpen} text="Secant" OnClick={()=>handleMethodSelect('secant')}/>
       </motion.ul>
     </motion.div>
   );
 };
 
-const Option = ({ text, Icon, setOpen }) => {
+const Option = ({ text, OnClick }) => {
   return (
     <motion.li
       variants={itemVariants}
-      onClick={() => setOpen(false)}
+      onClick={OnClick}
       className="dropdown-item"
     >
-      <Link to="/dashboard" className="link">
-        <motion.span variants={actionIconVariants}>
-          <Icon />
-        </motion.span>
         <span>{text}</span>
-      </Link>
     </motion.li>
   );
 };
