@@ -6,37 +6,54 @@ import {
   FiPlusSquare,
 } from "react-icons/fi";
 import { motion } from "framer-motion";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 const StaggeredDropDown = () => {
   const [open, setOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+
+    // Add event listener when the component mounts
+    document.addEventListener("click", handleClickOutside);
+
+    // Remove the event listener when the component unmounts
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
-    <>
-      <motion.div animate={open ? "open" : "closed"} className="relative z-40">
-        <button
-          onClick={() => setOpen((pv) => !pv)}
-          className="flex items-center gap-2 px-3 py-2 rounded-md text-indigo-50 bg-indigo-500 hover:bg-indigo-500 transition-colors"
-        >
-          <span className="font-medium text-sm">Post actions</span>
-          <motion.span variants={iconVariants}>
-            <FiChevronDown />
-          </motion.span>
-        </button>
+    <motion.div
+      animate={open ? "open" : "closed"}
+      className="method"
+      ref={dropdownRef}
+    >
+      <button onClick={() => setOpen((pv) => !pv)} className="dropdown-btn">
+        <span>Select Method</span>
+        <motion.span variants={iconVariants}>
+          <FiChevronDown />
+        </motion.span>
+      </button>
 
-        <motion.ul
-          initial={wrapperVariants.closed}
-          variants={wrapperVariants}
-          style={{ originY: "top", translateX: "-50%" }}
-          className="flex flex-col gap-2 p-2 rounded-lg bg-white shadow-xl absolute top-[120%] left-[50%] w-48 overflow-hidden"
-        >
-          <Option setOpen={setOpen} Icon={FiEdit} text="Edit" />
-          <Option setOpen={setOpen} Icon={FiPlusSquare} text="Duplicate" />
-          <Option setOpen={setOpen} Icon={FiShare} text="Share" />
-          <Option setOpen={setOpen} Icon={FiTrash} text="Remove" />
-        </motion.ul>
-      </motion.div>
-    </>
+      <motion.ul
+        initial={wrapperVariants.closed}
+        variants={wrapperVariants}
+        style={{ originY: "top", translateX: "-50%" }}
+        className="dropdown-menu"
+      >
+        <Option setOpen={setOpen} Icon={FiEdit} text="Edit" />
+        <Option setOpen={setOpen} Icon={FiPlusSquare} text="Duplicate" />
+        <Option setOpen={setOpen} Icon={FiShare} text="Share" />
+        <Option setOpen={setOpen} Icon={FiTrash} text="Remove" />
+      </motion.ul>
+    </motion.div>
   );
 };
 
@@ -45,12 +62,14 @@ const Option = ({ text, Icon, setOpen }) => {
     <motion.li
       variants={itemVariants}
       onClick={() => setOpen(false)}
-      className="flex items-center gap-2 w-full p-2 text-xs font-medium whitespace-nowrap rounded-md hover:bg-indigo-100 text-slate-700 hover:text-indigo-500 transition-colors cursor-pointer"
+      className="dropdown-item"
     >
-      <motion.span variants={actionIconVariants}>
-        <Icon />
-      </motion.span>
-      <span>{text}</span>
+      <Link to="/dashboard" className="link">
+        <motion.span variants={actionIconVariants}>
+          <Icon />
+        </motion.span>
+        <span>{text}</span>
+      </Link>
     </motion.li>
   );
 };
@@ -60,16 +79,18 @@ export default StaggeredDropDown;
 const wrapperVariants = {
   open: {
     scaleY: 1,
+    display: "flex",
     transition: {
       when: "beforeChildren",
-      staggerChildren: 0.1,
+      staggerChildren: 0.05,
     },
   },
   closed: {
     scaleY: 0,
+    display: "none",
     transition: {
       when: "afterChildren",
-      staggerChildren: 0.1,
+      staggerChildren: 0.05,
     },
   },
 };

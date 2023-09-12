@@ -10,8 +10,6 @@ function NavBar (){
             </div>
 
             <div className="navbar_content">
-                <i className='bx bx-sun' id="darkLight"></i>
-                <i className='bx bx-bell'></i>
             </div>
         </nav>
     )

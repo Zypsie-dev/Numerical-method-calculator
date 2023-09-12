@@ -7,6 +7,7 @@ import './assets/NavBar.css'
 import './assets/Content.css'
 import './assets/Calculator.css'
 import './assets/snow.scss'
+import './assets/Stagger.css'
 import App from './App'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

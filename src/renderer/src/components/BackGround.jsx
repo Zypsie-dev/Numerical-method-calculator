@@ -1,7 +1,7 @@
 
 function BackGround() {
   return (
-    <div></div>
+    <div className="snow"></div>
   )
   }
 export default BackGround;
