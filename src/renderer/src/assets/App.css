@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: "Montserrat";
+}
+:root{
+    --white-color : #ffffff;
+    --dark-color : #1d1d1d;
+    --text-color: rgb(192, 238, 242);
+    --active-color:rgb(83, 127, 231);
+    --header-color:rgb(6, 143, 255);
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: var(--dark-light);
+    padding: 0px;
+    margin:0px;
+    color:var(--text-color);
+    z-index: -1;
+}
