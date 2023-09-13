@@ -80,7 +80,6 @@ function Bisection({setMode}) {
 
       iteration++;
     }
-    console.table(newTableData);
     setResult(`Approximate root: ${x.toFixed(4)}, Iterations: ${iteration}`);
     setTableData(newTableData);
   };

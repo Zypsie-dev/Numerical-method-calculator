@@ -50,6 +50,8 @@ const StaggeredDropDown = ({setMode}) => {
       >
         <Option setOpen={setOpen} text="Bisection" OnClick={()=>handleMethodSelect('bisection')}/>
         <Option setOpen={setOpen} text="Secant" OnClick={()=>handleMethodSelect('secant')}/>
+        <Option setOpen={setOpen} text="Fixed point" OnClick={()=>handleMethodSelect('fixed')}/>
+
       </motion.ul>
     </motion.div>
   );

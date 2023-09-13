@@ -40,22 +40,10 @@ const path = require('node:path')
 const os = require('node:os')
 
 // on macOS
-const reactDevToolsPath = path.join(
-  os.homedir(),
-  '/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.9.0_0'
-)
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(async () => {
-  try {
-    await session.defaultSession.loadExtension(reactDevToolsPath)
-  }
-  catch (err) {
-    console.log(err)
-  }
-})
 app.whenReady().then(() => {
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')

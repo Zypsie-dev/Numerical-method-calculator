@@ -27,7 +27,6 @@ function SecantMethod({setMode}) {
     let x0 = parseFloat(initialGuess1);
     let x1 = parseFloat(initialGuess2);
     let epsilon = parseFloat(error);
-    console.log(x0, x1, epsilon);
     setResult('');
     setTableData([]);
 
@@ -60,7 +59,6 @@ function SecantMethod({setMode}) {
       if (Math.abs(x2 - x1) < epsilon) {
         setResult(`Approximate root: ${x2.toFixed(4)}, Iterations: ${iteration}`);
         setTableData(newTableData);
-        console.table(tableData);
         return;
       }
 

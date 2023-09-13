@@ -6,7 +6,6 @@ import './assets/SideBar.css'
 import './assets/NavBar.css'
 import './assets/Content.css'
 import './assets/Calculator.css'
-import './assets/snow.scss'
 import './assets/Stagger.css'
 import App from './App'
 
